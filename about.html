@@ -10,21 +10,57 @@
 </head>
 <body class="text-[#1E1E24] bg-white font-sans">
 
-    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <a href="index.html" class="flex flex-col">
-                <span class="text-xl font-bold tracking-[0.15em] text-[#1E1E24]">SAIRA JAHAN</span>
-                <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-medium">Salon & Academy</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
-                <a href="index.html" class="hover:text-[#DFBA73] transition">Home</a>
-                <a href="about.html" class="text-[#DFBA73]">About</a>
-                <a href="courses.html" class="hover:text-[#DFBA73] transition">Courses</a>
-                <a href="contact.html" class="hover:text-[#DFBA73] transition">Contact</a>
-                <a href="appointment.html" class="bg-[#1E1E24] text-white px-6 py-2.5 rounded-full hover:bg-[#DFBA73] hover:text-[#1E1E24] transition duration-300 shadow-sm">Book Now</a>
-            </div>
+   
+      <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <a href="index.html" class="flex flex-col">
+            <span class="text-xl font-bold tracking-[0.15em] text-[#1E1E24]">SAIRA JAHAN</span>
+            <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-medium">Salon & Academy</span>
+        </a>
+        
+        <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
+            <a href="index.html" class="hover:text-[#DFBA73] transition">Home</a>
+            <a href="about.html" class="hover:text-[#DFBA73] transition">About</a>
+            <a href="courses.html" class="hover:text-[#DFBA73] transition">Courses</a>
+            <a href="contact.html" class="hover:text-[#DFBA73] transition">Contact</a>
+            <a href="appointment.html" class="bg-[#1E1E24] text-white px-6 py-2.5 rounded-full hover:bg-[#DFBA73] hover:text-[#1E1E24] transition duration-300 shadow-sm">Book Now</a>
         </div>
-    </nav>
+
+        <div class="md:hidden flex items-center">
+            <button id="menuBtn" class="text-[#1E1E24] focus:outline-none text-xl p-2">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-4 shadow-inner text-sm font-semibold uppercase tracking-wider text-gray-600">
+        <a href="index.html" class="block hover:text-[#DFBA73] py-1">Home</a>
+        <a href="about.html" class="block hover:text-[#DFBA73] py-1">About</a>
+        <a href="courses.html" class="block hover:text-[#DFBA73] py-1">Courses</a>
+        <a href="contact.html" class="block hover:text-[#DFBA73] py-1">Contact</a>
+        <a href="appointment.html" class="block bg-[#1E1E24] text-white text-center py-2.5 rounded-xl hover:bg-[#DFBA73] hover:text-[#1E1E24] transition mt-2">Book Now</a>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuBtn.addEventListener('click', () => {
+            // Dropdown menu ko show/hide karne ke liye
+            mobileMenu.classList.toggle('hidden');
+            
+            // Icon ko change karne ke liye (Bars se Cross icon "X")
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+    </script>
+</nav>
 
     <section class="py-24 bg-white px-6">
         <div class="max-w-4xl mx-auto space-y-12">
