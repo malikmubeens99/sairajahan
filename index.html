@@ -17,59 +17,82 @@
             }
         }
     </script>
+    <style>
+        /* 3D Neumorphic Custom Layers */
+        .card-3d {
+            background: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0px 10px 30px rgba(0, 0, 0, 0.04), 
+                0px 1px 3px rgba(0, 0, 0, 0.02),
+                inset 0px 1px 0px rgba(255, 255, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-3d:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: #DFBA73;
+            box-shadow: 
+                0px 25px 50px -12px rgba(223, 186, 115, 0.25), 
+                0px 10px 20px -5px rgba(0, 0, 0, 0.03),
+                inset 0px 1px 0px rgba(255, 255, 255, 0.8);
+        }
+        .icon-box-3d {
+            background: #FAF9F6;
+            box-shadow: 
+                inset 0px 2px 5px rgba(0, 0, 0, 0.03), 
+                0px 4px 10px rgba(255, 255, 255, 0.9);
+        }
+    </style>
 </head>
-<body class="text-luxuryDark bg-white font-sans selection:bg-softGold/20">
+<body class="text-luxuryDark bg-[#FAF9F6] font-sans selection:bg-softGold/20">
 
-   <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-        <a href="index.html" class="flex flex-col">
-            <span class="text-xl font-bold tracking-[0.15em] text-[#1E1E24]">SAIRA JAHAN</span>
-            <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-medium">Salon & Academy</span>
-        </a>
-        
-        <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
-            <a href="index.html" class="hover:text-[#DFBA73] transition">Home</a>
-            <a href="about.html" class="hover:text-[#DFBA73] transition">About</a>
-            <a href="courses.html" class="hover:text-[#DFBA73] transition">Courses</a>
-            <a href="contact.html" class="hover:text-[#DFBA73] transition">Contact</a>
-            <a href="appointment.html" class="bg-[#1E1E24] text-white px-6 py-2.5 rounded-full hover:bg-[#DFBA73] hover:text-[#1E1E24] transition duration-300 shadow-sm">Book Now</a>
-        </div>
-
-        <div class="md:hidden flex items-center">
-            <button id="menuBtn" class="text-[#1E1E24] focus:outline-none text-xl p-2">
-                <i class="fas fa-bars" id="menuIcon"></i>
-            </button>
-        </div>
-    </div>
-
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-4 shadow-inner text-sm font-semibold uppercase tracking-wider text-gray-600">
-        <a href="index.html" class="block hover:text-[#DFBA73] py-1">Home</a>
-        <a href="about.html" class="block hover:text-[#DFBA73] py-1">About</a>
-        <a href="courses.html" class="block hover:text-[#DFBA73] py-1">Courses</a>
-        <a href="contact.html" class="block hover:text-[#DFBA73] py-1">Contact</a>
-        <a href="appointment.html" class="block bg-[#1E1E24] text-white text-center py-2.5 rounded-xl hover:bg-[#DFBA73] hover:text-[#1E1E24] transition mt-2">Book Now</a>
-    </div>
-
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-
-        menuBtn.addEventListener('click', () => {
-            // Dropdown menu ko show/hide karne ke liye
-            mobileMenu.classList.toggle('hidden');
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="text-xl font-bold tracking-[0.15em] text-[#1E1E24]">SAIRA JAHAN</span>
+                <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-medium">Salon & Academy</span>
+            </a>
             
-            // Icon ko change karne ke liye (Bars se Cross icon "X")
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            }
-        });
-    </script>
-</nav>
+            <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
+                <a href="index.html" class="hover:text-[#DFBA73] transition">Home</a>
+                <a href="about.html" class="hover:text-[#DFBA73] transition">About</a>
+                <a href="courses.html" class="hover:text-[#DFBA73] transition">Courses</a>
+                <a href="contact.html" class="hover:text-[#DFBA73] transition">Contact</a>
+                <a href="appointment.html" class="bg-[#1E1E24] text-white px-6 py-2.5 rounded-full hover:bg-[#DFBA73] hover:text-[#1E1E24] transition duration-300 shadow-sm">Book Now</a>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button id="menuBtn" class="text-[#1E1E24] focus:outline-none text-xl p-2">
+                    <i class="fas fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-4 shadow-inner text-sm font-semibold uppercase tracking-wider text-gray-600">
+            <a href="index.html" class="block hover:text-[#DFBA73] py-1">Home</a>
+            <a href="about.html" class="block hover:text-[#DFBA73] py-1">About</a>
+            <a href="courses.html" class="block hover:text-[#DFBA73] py-1">Courses</a>
+            <a href="contact.html" class="block hover:text-[#DFBA73] py-1">Contact</a>
+            <a href="appointment.html" class="block bg-[#1E1E24] text-white text-center py-2.5 rounded-xl hover:bg-[#DFBA73] hover:text-[#1E1E24] transition mt-2">Book Now</a>
+        </div>
+
+        <script>
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                }
+            });
+        </script>
+    </nav>
 
     <section class="relative bg-gradient-to-b from-lightGrey to-pureWhite py-32 md:py-40 px-6 overflow-hidden">
         <div class="absolute -top-40 -right-40 w-96 h-96 bg-softGold/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -92,30 +115,46 @@
         </div>
     </section>
 
-    <section class="py-20 bg-pureWhite px-6 border-t border-gray-50">
+    <section class="py-24 bg-white px-6 border-t border-gray-50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-xl mx-auto mb-16 space-y-2">
-                <span class="text-xs uppercase tracking-wider text-softGold font-bold">Why Saira Jahan?</span>
-                <h2 class="text-3xl font-bold tracking-tight">Everything You Need to Succeed</h2>
-                <div class="w-10 h-0.5 bg-softGold mx-auto mt-3"></div>
+            <div class="text-center max-w-xl mx-auto mb-20 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-softGold font-bold">Why Saira Jahan?</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-luxuryDark">Everything You Need to Succeed</h2>
+                <div class="w-12 h-0.5 bg-softGold mx-auto mt-2"></div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-10">
-                <div class="space-y-3 p-6 rounded-2xl hover:bg-lightGrey transition duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-softGold/10 flex items-center justify-center text-softGold text-xl"><i class="fas fa-graduation-cap"></i></div>
-                    <h3 class="text-lg font-bold">Professional Certificate</h3>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed">Get a certified, professional portfolio validation stamp that helps you open your own studio anywhere instantly.</p>
+                
+                <div class="card-3d p-8 rounded-[2.5rem] flex flex-col items-start space-y-6">
+                    <div class="w-20 h-20 rounded-2xl icon-box-3d flex items-center justify-center text-softGold border border-gray-100/50 shadow-inner">
+                        <i class="fas fa-graduation-cap text-3xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-luxuryDark">Professional Certificate</h3>
+                        <p class="text-gray-400 text-xs font-light leading-relaxed">Get a certified, professional portfolio validation stamp that helps you open your own studio anywhere instantly.</p>
+                    </div>
                 </div>
-                <div class="space-y-3 p-6 rounded-2xl hover:bg-lightGrey transition duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-softGold/10 flex items-center justify-center text-softGold text-xl"><i class="fas fa-magic"></i></div>
-                    <h3 class="text-lg font-bold">Live Model Practice</h3>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed">No plastic dummies. Practice your shading, blending, and cut alignments directly onto live models every single day.</p>
+
+                <div class="card-3d p-8 rounded-[2.5rem] flex flex-col items-start space-y-6">
+                    <div class="w-20 h-20 rounded-2xl icon-box-3d flex items-center justify-center text-softGold border border-gray-100/50 shadow-inner">
+                        <i class="fas fa-magic text-3xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-luxuryDark">Live Model Practice</h3>
+                        <p class="text-gray-400 text-xs font-light leading-relaxed">No plastic dummies. Practice your shading, blending, and cut alignments directly onto live models every single day.</p>
+                    </div>
                 </div>
-                <div class="space-y-3 p-6 rounded-2xl hover:bg-lightGrey transition duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-softGold/10 flex items-center justify-center text-softGold text-xl"><i class="fas fa-chart-line"></i></div>
-                    <h3 class="text-lg font-bold">Social Media Strategy</h3>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed">We teach you how to shoot high-depth client transformations, create killer reels, and run ads to get clients fast.</p>
+
+                <div class="card-3d p-8 rounded-[2.5rem] flex flex-col items-start space-y-6">
+                    <div class="w-20 h-20 rounded-2xl icon-box-3d flex items-center justify-center text-softGold border border-gray-100/50 shadow-inner">
+                        <i class="fas fa-chart-line text-3xl"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-luxuryDark">Social Media Strategy</h3>
+                        <p class="text-gray-400 text-xs font-light leading-relaxed">We teach you how to shoot high-depth client transformations, create killer reels, and run ads to get clients fast.</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
