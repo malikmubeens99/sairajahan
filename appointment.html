@@ -4,121 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saira Jahan Salon & Academy | Registration</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: { softGold: '#DFBA73', luxuryDark: '#1E1E24', pureWhite: '#FFFFFF', lightGrey: '#F8F9FA' }
+                }
+            }
+        }
+    </script>
     <style>
-        .premium-input { background: #F8F9FA; border: 1px solid #E9ECEF; transition: all 0.3s ease; }
-        .premium-input:focus { border-color: #DFBA73; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(223, 186, 115, 0.15); }
+        .interactive-input {
+            background: #FDFDFD;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .interactive-input:focus {
+            border-color: #DFBA73;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(223, 186, 115, 0.15);
+            transform: translateY(-1px);
+        }
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+        }
     </style>
 </head>
-<body class="text-[#1E1E24] bg-white font-sans">
+<body class="text-luxuryDark bg-[#FAF9F6] font-sans min-h-screen flex flex-col justify-between">
 
-    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+    <nav class="bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm top-0 z-50 sticky">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <a href="index.html" class="flex flex-col">
-                <span class="text-xl font-bold tracking-[0.15em] text-[#1E1E24]">SAIRA JAHAN</span>
+                <span class="text-xl font-bold tracking-[0.15em] text-luxuryDark">SAIRA JAHAN</span>
                 <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-medium">Salon & Academy</span>
             </a>
             <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
-                <a href="index.html" class="hover:text-[#DFBA73] transition">Home</a>
-                <a href="about.html" class="hover:text-[#DFBA73] transition">About</a>
-                <a href="courses.html" class="hover:text-[#DFBA73] transition">Courses</a>
-                <a href="contact.html" class="hover:text-[#DFBA73] transition">Contact</a>
-                <a href="appointment.html" class="text-[#DFBA73]">Book Now</a>
+                <a href="index.html" class="hover:text-softGold transition">Home</a>
+                <a href="about.html" class="hover:text-softGold transition">About</a>
+                <a href="courses.html" class="hover:text-softGold transition">Courses</a>
+                <a href="contact.html" class="hover:text-softGold transition">Contact</a>
+                <a href="appointment.html" class="text-softGold">Book Now</a>
             </div>
         </div>
     </nav>
 
-    <section class="py-24 bg-white px-6">
-        <div class="max-w-xl mx-auto bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-xl shadow-gray-100/50">
-            <div class="text-center mb-8 space-y-1">
-                <h2 class="text-2xl font-bold">Course Registration</h2>
-                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Secure Your Academy Slot</p>
+    <main class="flex-grow flex items-center justify-center py-16 px-4">
+        <div class="form-card max-w-xl w-full p-8 md:p-10 rounded-[2rem] border border-gray-100/80 shadow-2xl shadow-gray-200/60 relative">
+            
+            <div class="text-center mb-8 space-y-2">
+                <span class="text-[10px] uppercase tracking-[0.3em] text-softGold font-bold bg-softGold/10 px-3 py-1 rounded-full">Secure Your Slot</span>
+                <h2 class="text-3xl font-bold text-luxuryDark tracking-tight">Academy Registration</h2>
+                <p class="text-xs text-gray-400 font-light">Fill in your details to reserve your masterclass seat.</p>
             </div>
 
-            <div id="successAlert" class="hidden bg-emerald-50 border border-emerald-100 text-emerald-800 p-4 rounded-xl mb-6 text-center text-xs font-medium">
-                🎉 Registration submitted successfully! We will contact you shortly.
+            <div id="successAlert" class="hidden transform scale-95 transition-all duration-300 bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl mb-6 flex items-center space-x-3 text-xs font-medium">
+                <i class="fas fa-check-circle text-emerald-500 text-lg"></i>
+                <span>🎉 Registration submitted successfully! We will call you shortly.</span>
             </div>
 
-            <form id="appointmentForm" class="space-y-4 text-sm">
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Full Name</label>
-                    <input type="text" id="userName" required class="w-full p-3 rounded-xl premium-input focus:outline-none">
+            <div id="errorAlert" class="hidden transform scale-95 transition-all duration-300 bg-red-50 border border-red-200 text-red-800 p-4 rounded-xl mb-6 flex items-center space-x-3 text-xs font-medium">
+                <i class="fas fa-exclamation-circle text-red-500 text-lg"></i>
+                <span id="errorMessage">Database connection error. Please try again.</span>
+            </div>
+
+            <form id="appointmentForm" class="space-y-5 text-sm">
+                <div class="space-y-1">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400">Full Name</label>
+                    <input type="text" id="userName" required placeholder="Enter your full name" class="w-full p-3.5 rounded-xl interactive-input text-neutral-700 focus:outline-none">
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Email Address</label>
-                        <input type="email" id="userEmail" required class="w-full p-3 rounded-xl premium-input focus:outline-none">
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400">Email Address</label>
+                        <input type="email" id="userEmail" required placeholder="name@domain.com" class="w-full p-3.5 rounded-xl interactive-input text-neutral-700 focus:outline-none">
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Phone Number</label>
-                        <input type="tel" id="userPhone" required class="w-full p-3 rounded-xl premium-input focus:outline-none">
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400">Phone Number</label>
+                        <input type="tel" id="userPhone" required placeholder="e.g., 03331234567" class="w-full p-3.5 rounded-xl interactive-input text-neutral-700 focus:outline-none">
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Select Program</label>
-                    <select id="userCourse" required class="w-full p-3 rounded-xl premium-input bg-white focus:outline-none cursor-pointer">
-                        <option value="">-- Choose a Course Track --</option>
-                        <option value="Professional Bridal Makeup">Professional Bridal Makeup</option>
-                        <option value="Advanced Hair Artistry">Advanced Hair Artistry</option>
-                        <option value="Aesthetic Skin Therapy">Aesthetic Skin Therapy</option>
-                    </select>
+                <div class="space-y-1">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400">Select Program</label>
+                    <div class="relative">
+                        <select id="userCourse" required class="w-full p-3.5 rounded-xl interactive-input bg-white text-neutral-700 focus:outline-none cursor-pointer appearance-none">
+                            <option value="">-- Choose a Course Track --</option>
+                            <option value="Professional Bridal Makeup">Professional Bridal Makeup</option>
+                            <option value="Advanced Hair Artistry">Advanced Hair Artistry</option>
+                            <option value="Aesthetic Skin Therapy">Aesthetic Skin Therapy</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-4.5 text-gray-400 pointer-events-none text-xs"></i>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Preferred Commencement Date</label>
-                    <input type="date" id="userDate" required class="w-full p-3 rounded-xl premium-input focus:outline-none">
+                <div class="space-y-1">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400">Preferred Commencement Date</label>
+                    <input type="date" id="userDate" required class="w-full p-3.5 rounded-xl interactive-input text-neutral-700 focus:outline-none">
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Special Queries / Notes</label>
-                    <textarea id="userMessage" rows="3" class="w-full p-3 rounded-xl premium-input focus:outline-none"></textarea>
+                <div class="space-y-1">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400">Special Queries / Notes <span class="text-gray-300 font-normal">(Optional)</span></label>
+                    <textarea id="userMessage" rows="3" placeholder="Any timing requests or background info..." class="w-full p-3.5 rounded-xl interactive-input text-neutral-700 focus:outline-none resize-none"></textarea>
                 </div>
 
-                <button type="submit" id="submitBtn" class="w-full bg-[#1E1E24] text-white font-bold py-4 rounded-xl hover:bg-[#DFBA73] hover:text-[#1E1E24] transition duration-300 text-xs uppercase tracking-widest pt-3">
-                    Submit Registration Form
+                <button type="submit" id="submitBtn" class="w-full bg-luxuryDark text-white font-bold py-4 rounded-xl hover:bg-softGold hover:text-luxuryDark transition duration-300 text-xs uppercase tracking-widest flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl shadow-gray-900/10 active:scale-[0.99] transform">
+                    <span id="btnText">Submit Registration</span>
+                    <i id="btnSpinner" class="fas fa-circle-notch animate-spin hidden ml-2 text-sm"></i>
                 </button>
             </form>
         </div>
-    </section>
+    </main>
 
-    <footer class="bg-[#111115] text-gray-400 py-16 px-6 text-sm">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-10">
-            <div class="space-y-4">
+    <footer class="bg-[#111115] text-gray-400 py-12 px-6 text-sm">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
+            <div class="space-y-3">
                 <span class="text-lg font-bold tracking-widest text-white uppercase">SAIRA JAHAN</span>
                 <p class="text-xs text-gray-500 font-light leading-relaxed">Where elite beauty styling fundamentals meet premium international certifications.</p>
-                <div class="flex items-center space-x-4 pt-2">
-                    <a href="https://www.instagram.com/thesairajsalon?igsh=bmF6ZWt5ZnNvbGFm" target="_blank" class="hover:text-white transition"><i class="fab fa-instagram text-base"></i></a>
-                    <a href="https://www.tiktok.com/@sj.sairasalon?_r=1&_t=ZS-96mg3TIooVE" target="_blank" class="hover:text-white transition"><i class="fab fa-tiktok text-base"></i></a>
-                    <a href="https://web.facebook.com/thesairajsalon/?" target="_blank" class="hover:text-white transition"><i class="fab fa-facebook text-base"></i></a>
-                </div>
             </div>
-            <div class="space-y-2">
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider">📍 Address Location</h4>
-                <p class="text-xs text-gray-400 font-light leading-relaxed">Shop #2, PIA Road,<br>Near UMT University, Lahore.</p>
+            <div class="space-y-1">
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider">📍 Location</h4>
+                <p class="text-xs text-gray-400 font-light">Shop #2, PIA Road,<br>Near UMT University, Lahore.</p>
             </div>
-            <div class="space-y-2">
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider">📞 Contact Desk</h4>
-                <p class="text-xs text-gray-400 font-light leading-relaxed">Call / WhatsApp:<br>+92 333 6992641</p>
+            <div class="space-y-1">
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider">📞 Contact</h4>
+                <p class="text-xs text-gray-400 font-light">Call / WhatsApp:<br>+92 333 6992641</p>
             </div>
-            <div class="space-y-2">
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider">🕒 Operational Hours</h4>
-                <p class="text-xs text-gray-400 font-light leading-relaxed">Tuesday — Sunday<br>11:00 AM — 08:00 PM <span class="text-[#DFBA73]">(Mondays Closed)</span></p>
+            <div class="space-y-1">
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider">🕒 Hours</h4>
+                <p class="text-xs text-gray-400 font-light">Tuesday — Sunday<br>11:00 AM — 08:00 PM</p>
             </div>
-        </div>
-        <div class="max-w-6xl mx-auto mt-12 pt-6 border-t border-gray-800 text-center text-xs text-gray-600">
-            &copy; 2026 Saira Jahan Salon & Academy. All Rights Reserved.
         </div>
     </footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 
+        // Verified active credential mapping configurations
         const firebaseConfig = {
             apiKey: "AIzaSyDK4O8aDtNffQWik7vGP2-S24LQDHi25XY",
             authDomain: "sairajahan.firebaseapp.com",
@@ -130,41 +159,74 @@
             measurementId: "G-97F1ZSHTYY"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const analytics = getAnalytics(app);
+        // Initialize connection context
+        let db;
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+        } catch (e) {
+            console.error("Firebase startup crash: ", e);
+            showError("Firebase core config init crash. Check script connectivity indicators.");
+        }
 
         const form = document.getElementById('appointmentForm');
-        const alertBox = document.getElementById('successAlert');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+        const errorMessage = document.getElementById('errorMessage');
         const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
 
+        // Capture router params values safely
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const selectedCourse = params.get('course');
-            if (selectedCourse) { document.getElementById('userCourse').value = selectedCourse; }
+            if (selectedCourse) { 
+                document.getElementById('userCourse').value = decodeURIComponent(selectedCourse); 
+            }
         });
+
+        function showError(msg) {
+            errorMessage.innerText = msg;
+            errorAlert.classList.remove('hidden');
+            setTimeout(() => errorAlert.classList.add('hidden'), 6000);
+        }
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            submitBtn.innerText = "Processing Details...";
+            
+            // Set dynamic active state styles
+            btnText.innerText = "Processing Details...";
+            btnSpinner.classList.remove('hidden');
             submitBtn.disabled = true;
+            successAlert.classList.add('hidden');
+            errorAlert.classList.add('hidden');
+
             try {
+                if (!db) throw new Error("Firestore instance state not compiled.");
+
                 await addDoc(collection(db, "appointments"), {
-                    name: document.getElementById('userName').value,
-                    email: document.getElementById('userEmail').value,
-                    phone: document.getElementById('userPhone').value,
+                    name: document.getElementById('userName').value.trim(),
+                    email: document.getElementById('userEmail').value.trim(),
+                    phone: document.getElementById('userPhone').value.trim(),
                     course: document.getElementById('userCourse').value,
                     date: document.getElementById('userDate').value,
-                    message: document.getElementById('userMessage').value,
+                    message: document.getElementById('userMessage').value.trim(),
                     createdAt: serverTimestamp()
                 });
-                alertBox.classList.remove('hidden');
+
+                // Display response alert structure smoothly
+                successAlert.classList.remove('hidden');
                 form.reset();
-                setTimeout(() => alertBox.classList.add('hidden'), 4000);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
             } catch (error) {
-                console.error("Firebase fail: ", error);
+                console.error("Firestore Write Block Crash Event: ", error);
+                showError("Masla hua: " + (error.message || "Connection timeout or permission denied. Check your Firebase rules."));
             } finally {
-                submitBtn.innerText = "Submit Registration Form";
+                // Reset interaction status bounds
+                btnText.innerText = "Submit Registration";
+                btnSpinner.classList.add('hidden');
                 submitBtn.disabled = false;
             }
         });
