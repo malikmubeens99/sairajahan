@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saira Jahan Academy | Admin Control Desk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: { softGold: '#DFBA73', luxuryDark: '#1E1E24', pureWhite: '#FFFFFF', lightGrey: '#F8F9FA' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: radial-gradient(circle at 10% 10%, rgba(223, 186, 115, 0.06) 0%, #F4F5F7 100%); }
+        
+        /* Premium Light Glassmorphism with Glows */
+        .glass-panel-light { 
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.9); 
+        }
+        
+        /* 3D Glow Highlights for Counters */
+        .glow-card-gold { box-shadow: 0 10px 25px -5px rgba(223, 186, 115, 0.2), inset 0 0 12px rgba(223, 186, 115, 0.05); border: 1px solid rgba(223, 186, 115, 0.4); }
+        .glow-card-blue { box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15), inset 0 0 12px rgba(59, 130, 246, 0.02); border: 1px solid rgba(59, 130, 246, 0.3); }
+        .glow-card-purple { box-shadow: 0 10px 25px -5px rgba(147, 51, 234, 0.15), inset 0 0 12px rgba(147, 51, 234, 0.02); border: 1px solid rgba(147, 51, 234, 0.3); }
+        
+        .premium-input {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+        .premium-input:focus {
+            border-color: #DFBA73;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(223, 186, 115, 0.15);
+        }
+    </style>
+</head>
+<body class="text-luxuryDark font-sans min-h-screen">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-xl font-bold tracking-[0.15em] text-luxuryDark">SAIRA JAHAN</span>
+                <span class="text-[9px] uppercase tracking-[0.3em] text-softGold font-bold">Internal Admin Control</span>
+            </div>
+            <div class="flex items-center space-x-3 text-xs font-semibold text-emerald-700 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10B981]"></span>
+                Real-time Sync Active
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-10 space-y-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl glow-card-gold flex items-center justify-between transition-transform duration-300 hover:scale-[1.01]">
+                <div class="space-y-1">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Total Applications</span>
+                    <h3 id="totalCount" class="text-3xl font-bold text-luxuryDark">0</h3>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-softGold/10 flex items-center justify-center text-softGold text-xl border border-softGold/20 shadow-inner"><i class="fas fa-users"></i></div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl glow-card-blue flex items-center justify-between transition-transform duration-300 hover:scale-[1.01]">
+                <div class="space-y-1">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Latest Registration</span>
+                    <p id="latestName" class="text-sm font-bold text-blue-600 truncate max-w-[180px]">Loading stream...</p>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 text-xl border border-blue-100 shadow-inner"><i class="fas fa-user-clock"></i></div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl glow-card-purple flex items-center justify-between transition-transform duration-300 hover:scale-[1.01]">
+                <div class="space-y-1">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Academy Campus</span>
+                    <p class="text-xs font-semibold text-purple-600">Shop #2, PIA Road, Lahore</p>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-500 text-xl border border-purple-100 shadow-inner"><i class="fas fa-map-marked-alt"></i></div>
+            </div>
+        </div>
+
+        <div class="glass-panel-light p-4 rounded-2xl shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div class="relative w-full">
+                <i class="fas fa-search absolute left-4 top-3.5 text-gray-400 text-sm"></i>
+                <input type="text" id="searchInput" oninput="applyAllFilters()" placeholder="Search by name or phone..." class="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm focus:outline-none premium-input">
+            </div>
+
+            <div class="relative w-full">
+                <select id="courseFilter" onchange="applyAllFilters()" class="w-full px-4 py-2.5 rounded-xl text-sm focus:outline-none premium-input appearance-none cursor-pointer text-gray-600">
+                    <option value="">-- All Courses --</option>
+                    <option value="Professional Bridal Makeup">Professional Bridal Makeup</option>
+                    <option value="Advanced Hair Artistry">Advanced Hair Artistry</option>
+                    <option value="Aesthetic Skin Therapy">Aesthetic Skin Therapy</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-4 top-4 text-gray-400 pointer-events-none text-xs"></i>
+            </div>
+
+            <div class="relative w-full">
+                <input type="date" id="dateFilter" onchange="applyAllFilters()" class="w-full px-4 py-2.5 rounded-xl text-sm focus:outline-none premium-input cursor-pointer text-gray-600">
+                <button onclick="resetDateFilter()" id="clearDateBtn" class="hidden absolute right-10 top-3 text-gray-400 hover:text-red-500 text-xs"><i class="fas fa-times-circle"></i></button>
+            </div>
+        </div>
+
+        <div class="glass-panel-light rounded-3xl shadow-xl shadow-gray-200/50 overflow-hidden">
+            <div class="p-6 border-b border-gray-200/60 flex justify-between items-center bg-white/40">
+                <h3 class="font-bold text-sm tracking-wide uppercase text-gray-500">Customer Records Database</h3>
+                <span class="text-xs text-gray-400 font-light">Sorted dynamically</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-white/60 border-b border-gray-200/60 text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                            <th class="py-4 px-6">Student Details</th>
+                            <th class="py-4 px-6">Selected Program</th>
+                            <th class="py-4 px-6">Batch Preference</th>
+                            <th class="py-4 px-6">Submission Time</th>
+                            <th class="py-4 px-6 text-center">Quick Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody" class="divide-y divide-gray-100 text-sm bg-white/30">
+                        <tr id="loadingRow">
+                            <td colspan="5" class="py-16 text-center text-gray-400 font-light text-xs">
+                                <i class="fas fa-circle-notch animate-spin text-softGold text-xl mb-2 block mx-auto"></i>
+                                Pulling live metrics...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDK4O8aDtNffQWik7vGP2-S24LQDHi25XY",
+            authDomain: "sairajahan.firebaseapp.com",
+            databaseURL: "https://sairajahan-default-rtdb.firebaseio.com",
+            projectId: "sairajahan",
+            storageBucket: "sairajahan.firebasestorage.app",
+            messagingSenderId: "482025671453",
+            appId: "1:482025671453:web:de80629c3c93e243f86ff4",
+            measurementId: "G-97F1ZSHTYY"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let localAppointmentsCache = [];
+        const appointmentsQuery = query(collection(db, "appointments"), orderBy("createdAt", "desc"));
+
+        onSnapshot(appointmentsQuery, (snapshot) => {
+            const tableBody = document.getElementById('adminTableBody');
+            const loadingRow = document.getElementById('loadingRow');
+            if(loadingRow) loadingRow.remove();
+            
+            localAppointmentsCache = [];
+
+            if (snapshot.empty) {
+                tableBody.innerHTML = `<tr><td colspan="5" class="py-12 text-center text-gray-400 font-light text-xs">No entries found inside the system database.</td></tr>`;
+                document.getElementById('totalCount').innerText = 0;
+                document.getElementById('latestName').innerText = "None";
+                return;
+            }
+
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                localAppointmentsCache.push({
+                    id: doc.id,
+                    name: data.name || 'N/A',
+                    email: data.email || 'N/A',
+                    phone: data.phone || 'N/A',
+                    course: data.course || 'N/A',
+                    date: data.date || '',
+                    message: data.message || '',
+                    createdAt: data.createdAt ? data.createdAt.toDate().toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short' }) : 'Pending...'
+                });
+            });
+
+            document.getElementById('totalCount').innerText = localAppointmentsCache.length;
+            document.getElementById('latestName').innerText = localAppointmentsCache[0].name;
+            
+            applyAllFilters();
+        });
+
+        window.renderTableData = function(dataArray) {
+            const tableBody = document.getElementById('adminTableBody');
+            tableBody.innerHTML = "";
+
+            if(dataArray.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="5" class="py-12 text-center text-gray-400 font-light text-xs">No records match the active criteria filters.</td></tr>`;
+                return;
+            }
+
+            dataArray.forEach((item) => {
+                let cleanPhone = item.phone.replace(/[^0-9]/g, '');
+                if(cleanPhone.startsWith('0')) { cleanPhone = '92' + cleanPhone.substring(1); }
+
+                // Assign clean semantic border glow outlines to separate different programs easily
+                let badgeStyle = "border-amber-200 text-amber-700 bg-amber-50/60";
+                if(item.course.includes("Hair")) badgeStyle = "border-blue-200 text-blue-700 bg-blue-50/60";
+                if(item.course.includes("Skin")) badgeStyle = "border-purple-200 text-purple-700 bg-purple-50/60";
+
+                const rowHTML = `
+                    <tr class="hover:bg-white/60 transition duration-150">
+                        <td class="py-4 px-6">
+                            <div class="font-bold text-gray-900">${item.name}</div>
+                            <div class="text-xs text-gray-400 mt-0.5">${item.email}</div>
+                        </td>
+                        <td class="py-4 px-6">
+                            <span class="inline-block text-[11px] px-3 py-1 rounded-full font-semibold border ${badgeStyle}">${item.course}</span>
+                        </td>
+                        <td class="py-4 px-6 text-xs text-gray-600 font-medium"><i class="far fa-calendar-alt text-gray-400 mr-2"></i>${item.date || 'Not Set'}</td>
+                        <td class="py-4 px-6 text-xs text-gray-400 font-light">${item.createdAt}</td>
+                        <td class="py-4 px-6 text-center space-x-2">
+                            <a href="https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(item.name)},%20this%20is%20Saira%20Jahan%20Salon%20%26%20Academy." target="_blank" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white text-emerald-600 border border-gray-100 shadow-sm hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition duration-200">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </a>
+                            ${item.message ? `
+                                <button onclick="alert('Message Notes:\\n\\n${item.message.replace(/'/g, "\\'")}')" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white text-blue-600 border border-gray-100 shadow-sm hover:bg-blue-500 hover:text-white hover:border-blue-500 transition duration-200">
+                                    <i class="far fa-comment-dots text-sm"></i>
+                                </button>
+                            ` : ''}
+                        </td>
+                    </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', rowHTML);
+            });
+        };
+
+        window.applyAllFilters = function() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase().trim();
+            const courseSelect = document.getElementById('courseFilter').value;
+            const dateSelect = document.getElementById('dateFilter').value;
+            const clearDateBtn = document.getElementById('clearDateBtn');
+
+            if(dateSelect) { clearDateBtn.classList.remove('hidden'); } 
+            else { clearDateBtn.classList.add('hidden'); }
+
+            const finalFilteredList = localAppointmentsCache.filter(item => {
+                const matchesSearch = !searchText || item.name.toLowerCase().includes(searchText) || item.email.toLowerCase().includes(searchText) || item.phone.includes(searchText);
+                const matchesCourse = !courseSelect || item.course === courseSelect;
+                const matchesDate = !dateSelect || item.date === dateSelect;
+                return matchesSearch && matchesCourse && matchesDate;
+            });
+
+            renderTableData(finalFilteredList);
+        };
+
+        window.resetDateFilter = function() {
+            document.getElementById('dateFilter').value = "";
+            applyAllFilters();
+        };
+    </script>
+</body>
+</html>
