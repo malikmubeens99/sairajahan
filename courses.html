@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saira Jahan Salon & Academy | Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="text-[#1E1E24] bg-[#F8F9FA] font-sans">
+
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="text-xl font-bold tracking-[0.15em] text-[#1E1E24]">SAIRA JAHAN</span>
+                <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-medium">Salon & Academy</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
+                <a href="index.html" class="hover:text-[#DFBA73] transition">Home</a>
+                <a href="about.html" class="hover:text-[#DFBA73] transition">About</a>
+                <a href="courses.html" class="text-[#DFBA73]">Courses</a>
+                <a href="contact.html" class="hover:text-[#DFBA73] transition">Contact</a>
+                <a href="appointment.html" class="bg-[#1E1E24] text-white px-6 py-2.5 rounded-full hover:bg-[#DFBA73] hover:text-[#1E1E24] transition duration-300 shadow-sm">Book Admission</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 space-y-2">
+                <h2 class="text-3xl font-bold tracking-tight">Available Masterclasses</h2>
+                <p class="text-gray-400 text-sm font-light">Select a certified course track below to start enrollment.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#DFBA73] bg-[#DFBA73]/10 px-3 py-1 rounded-full">4 Weeks</span>
+                            <span class="text-lg font-bold">Rs. 45,000</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Professional Bridal Makeup</h3>
+                        <p class="text-gray-400 text-xs font-light leading-relaxed">Master high-definition makeup, flawless base formulations, traditional bridal looks, and premium airbrush art.</p>
+                    </div>
+                    <button onclick="navigateToForm('Professional Bridal Makeup')" class="mt-8 w-full border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-[#DFBA73] hover:border-[#DFBA73] hover:text-[#1E1E24] transition duration-300">Book Slot</button>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#DFBA73] bg-[#DFBA73]/10 px-3 py-1 rounded-full">3 Weeks</span>
+                            <span class="text-lg font-bold">Rs. 35,000</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Advanced Hair Artistry</h3>
+                        <p class="text-gray-400 text-xs font-light leading-relaxed">Learn contemporary cuts, structural styling, complex updos, hair extensions, and modern coloring/balayage.</p>
+                    </div>
+                    <button onclick="navigateToForm('Advanced Hair Artistry')" class="mt-8 w-full border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-[#DFBA73] hover:border-[#DFBA73] hover:text-[#1E1E24] transition duration-300">Book Slot</button>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#DFBA73] bg-[#DFBA73]/10 px-3 py-1 rounded-full">2 Weeks</span>
+                            <span class="text-lg font-bold">Rs. 25,000</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Aesthetic Skin Therapy</h3>
+                        <p class="text-gray-400 text-xs font-light leading-relaxed">Deep dive into skin anatomy, hydration facials, chemical peels, and clinical product consultation practices.</p>
+                    </div>
+                    <button onclick="navigateToForm('Aesthetic Skin Therapy')" class="mt-8 w-full border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-[#DFBA73] hover:border-[#DFBA73] hover:text-[#1E1E24] transition duration-300">Book Slot</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function navigateToForm(courseName) {
+            window.location.href = `appointment.html?course=${encodeURIComponent(courseName)}`;
+        }
+    </script>
+</body>
+</html>
