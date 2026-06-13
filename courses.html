@@ -7,34 +7,50 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: { softGold: '#DFBA73', luxuryDark: '#1E1E24', pureWhite: '#FFFFFF', lightGrey: '#F8F9FA' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: radial-gradient(circle at top right, rgba(223, 186, 115, 0.07) 0%, #FAF9F6 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.6); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { transform: translateY(-4px); border-color: #DFBA73; box-shadow: 0 20px 25px -5px rgba(223, 186, 115, 0.1); }
+        .glass-nav { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+    </style>
 </head>
-<body class="text-[#1E1E24] bg-[#F8F9FA] font-sans">
+<body class="text-luxuryDark font-sans min-h-screen flex flex-col justify-between">
 
-    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+    <nav class="glass-nav sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <a href="index.html" class="flex flex-col">
-                <span class="text-xl font-bold tracking-[0.15em] text-[#1E1E24]">SAIRA JAHAN</span>
+                <span class="text-xl font-bold tracking-[0.15em] text-luxuryDark">SAIRA JAHAN</span>
                 <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-medium">Salon & Academy</span>
             </a>
             <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-600">
-                <a href="index.html" class="hover:text-[#DFBA73] transition">Home</a>
-                <a href="about.html" class="hover:text-[#DFBA73] transition">About</a>
-                <a href="courses.html" class="text-[#DFBA73]">Courses</a>
-                <a href="contact.html" class="hover:text-[#DFBA73] transition">Contact</a>
-                <a href="appointment.html" class="bg-[#1E1E24] text-white px-6 py-2.5 rounded-full hover:bg-[#DFBA73] hover:text-[#1E1E24] transition duration-300 shadow-sm">Book Now</a>
+                <a href="index.html" class="hover:text-softGold transition">Home</a>
+                <a href="about.html" class="hover:text-softGold transition">About</a>
+                <a href="courses.html" class="text-softGold">Courses</a>
+                <a href="contact.html" class="hover:text-softGold transition">Contact</a>
+                <a href="appointment.html" class="bg-luxuryDark text-pureWhite px-6 py-2.5 rounded-full hover:bg-softGold hover:text-luxuryDark transition duration-300 shadow-sm">Book Now</a>
             </div>
         </div>
     </nav>
 
-    <section class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
+    <section class="py-24 px-6 flex-grow w-full">
+        <div class="max-w-6xl mx-auto space-y-12">
             <div class="text-center mb-16 space-y-2">
                 <h2 class="text-3xl font-bold tracking-tight">Available Masterclasses</h2>
                 <p class="text-gray-400 text-sm font-light">Select a certified course track below to start enrollment reservation.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="glass-card p-8 rounded-3xl shadow-sm flex flex-col justify-between text-left">
                     <div class="space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-[11px] font-bold uppercase tracking-wider text-[#DFBA73] bg-[#DFBA73]/10 px-3 py-1 rounded-full">4 Weeks</span>
@@ -43,10 +59,10 @@
                         <h3 class="text-xl font-bold">Professional Bridal Makeup</h3>
                         <p class="text-gray-400 text-xs font-light leading-relaxed">Master high-definition makeup, flawless base formulations, traditional bridal looks, and premium airbrush art.</p>
                     </div>
-                    <button onclick="navigateToForm('Professional Bridal Makeup')" class="mt-8 w-full border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-[#DFBA73] hover:border-[#DFBA73] hover:text-[#1E1E24] transition duration-300">Book Slot</button>
+                    <button onclick="navigateToForm('Professional Bridal Makeup')" class="mt-8 w-full bg-white border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-softGold hover:border-softGold hover:text-luxuryDark transition duration-300 shadow-sm">Book Slot</button>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="glass-card p-8 rounded-3xl shadow-sm flex flex-col justify-between text-left">
                     <div class="space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-[11px] font-bold uppercase tracking-wider text-[#DFBA73] bg-[#DFBA73]/10 px-3 py-1 rounded-full">3 Weeks</span>
@@ -55,10 +71,10 @@
                         <h3 class="text-xl font-bold">Advanced Hair Artistry</h3>
                         <p class="text-gray-400 text-xs font-light leading-relaxed">Learn contemporary cuts, structural styling, complex updos, hair extensions, and modern coloring/balayage.</p>
                     </div>
-                    <button onclick="navigateToForm('Advanced Hair Artistry')" class="mt-8 w-full border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-[#DFBA73] hover:border-[#DFBA73] hover:text-[#1E1E24] transition duration-300">Book Slot</button>
+                    <button onclick="navigateToForm('Advanced Hair Artistry')" class="mt-8 w-full bg-white border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-softGold hover:border-softGold hover:text-luxuryDark transition duration-300 shadow-sm">Book Slot</button>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="glass-card p-8 rounded-3xl shadow-sm flex flex-col justify-between text-left">
                     <div class="space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-[11px] font-bold uppercase tracking-wider text-[#DFBA73] bg-[#DFBA73]/10 px-3 py-1 rounded-full">2 Weeks</span>
@@ -67,16 +83,16 @@
                         <h3 class="text-xl font-bold">Aesthetic Skin Therapy</h3>
                         <p class="text-gray-400 text-xs font-light leading-relaxed">Deep dive into skin anatomy, hydration facials, chemical peels, and clinical product consultation practices.</p>
                     </div>
-                    <button onclick="navigateToForm('Aesthetic Skin Therapy')" class="mt-8 w-full border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-[#DFBA73] hover:border-[#DFBA73] hover:text-[#1E1E24] transition duration-300">Book Slot</button>
+                    <button onclick="navigateToForm('Aesthetic Skin Therapy')" class="mt-8 w-full bg-white border border-gray-200 text-gray-700 py-3 rounded-xl text-xs uppercase font-bold tracking-wider hover:bg-softGold hover:border-softGold hover:text-luxuryDark transition duration-300 shadow-sm">Book Slot</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#111115] text-gray-400 py-16 px-6 text-sm">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-10">
+    <footer class="bg-[#111115] text-gray-400 py-16 px-6 text-sm border-t border-luxuryDark">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-10 text-left">
             <div class="space-y-4">
-                <span class="text-lg font-bold tracking-widest text-white uppercase">SAIRA JAHAN</span>
+                <span class="text-lg font-bold tracking-widest text-pureWhite uppercase">SAIRA JAHAN</span>
                 <p class="text-xs text-gray-500 font-light leading-relaxed">Where elite beauty styling fundamentals meet premium international certifications.</p>
                 <div class="flex items-center space-x-4 pt-2">
                     <a href="https://www.instagram.com/thesairajsalon?igsh=bmF6ZWt5ZnNvbGFm" target="_blank" class="hover:text-white transition"><i class="fab fa-instagram text-base"></i></a>
@@ -85,15 +101,15 @@
                 </div>
             </div>
             <div class="space-y-2">
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider">📍 Address Location</h4>
+                <h4 class="text-pureWhite font-bold text-xs uppercase tracking-wider">📍 Address Location</h4>
                 <p class="text-xs text-gray-400 font-light leading-relaxed">Shop #2, PIA Road,<br>Near UMT University, Lahore.</p>
             </div>
             <div class="space-y-2">
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider">📞 Contact Desk</h4>
+                <h4 class="text-pureWhite font-bold text-xs uppercase tracking-wider">📞 Contact Desk</h4>
                 <p class="text-xs text-gray-400 font-light leading-relaxed">Call / WhatsApp:<br>+92 333 6992641</p>
             </div>
             <div class="space-y-2">
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider">🕒 Operational Hours</h4>
+                <h4 class="text-pureWhite font-bold text-xs uppercase tracking-wider">🕒 Operational Hours</h4>
                 <p class="text-xs text-gray-400 font-light leading-relaxed">Tuesday — Sunday<br>11:00 AM — 08:00 PM <span class="text-[#DFBA73]">(Mondays Closed)</span></p>
             </div>
         </div>
